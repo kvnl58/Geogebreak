@@ -1,4 +1,5 @@
 # Geogebreak
+Open html in a browser to open app.
 
 add tags in the code that will be replace by their respective variable names. For example, babadook onUpdate script looks like this:
 
