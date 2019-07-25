@@ -1,0 +1,35 @@
+body {
+	background-color: rgb(215, 244, 255);
+	font-family: Sans-Serif;
+	margin: 4vw;
+}
+
+button {
+	background: #3498db;
+	width: 180px;
+  	padding: 4px 0;
+}
+
+input {
+	width: 180px;
+  	padding: 4px 0;
+}
+
+select {
+	width: 180px;
+  	padding: 4px 0;
+}
+
+#settings {
+	display: inline-block;
+	float: left;
+	width: 50%;
+
+}
+
+#codeSection {
+	display: inline-block;
+	width: 50%;
+	float:right;
+
+}
