@@ -19,7 +19,6 @@
 			<div id="typeGoal">
 				<h3>Choose var type and goal</h3>
 				<p>Replace variable names with #tag in any additional script</p>
-				<input id="Tag" placeholder="Tag" onchange="setTag()"/> 
 				<select id="mainSelect" onchange="setMain()">
 				  <option value='InputBox'>InputBox</option>
 				  <option value='text'>Text</option>
@@ -31,12 +30,12 @@
 					<option value='create'>Create</option>
 					<option value='edit'>Edit</option>
 				</select>
-				<button class="buttons"onclick="reset()">Reset</Button>
+				<button class="buttons" onclick="reset()">Reset</Button>
 			</div>
 			<div id="attributes">
 				<h3>Specify attributes</h3>
 				<div id="reqAttribs">
-					<input id="Tag" placeholder="Tag"/> 
+					<input id="Tag" placeholder="Tag" onchange="setTag()"/> 
 					<input id="Name" placeholder="Name" onchange="changeName(this)"/>
 					<input id="Value" placeholder="Value" onchange="setVal()"/> 
 					<input id="start" placeholder="Start Index" type="number" name="quantity" min="1" onchange="setInd()"/>
@@ -49,8 +48,8 @@
 						<option value="javascript">javascript</option>
 						<option value="ggbscript">geogebra</option>
 					</select>
-					<input id="baba" type="checkbox" onchange="updateAtt(this)">Prepend Babadook</input>
-					<button class="buttons"onclick="removeAtt(this)">Remove</button>
+					<input class="check" id="baba" type="checkbox" onchange="updateAtt(this)">Prepend Babadook</input>
+					<button class="buttons" onclick="removeAtt(this)">Remove</button>
 				</div>
 
 				<div id="val" style="display: none;">
@@ -60,38 +59,38 @@
 						<option value="javascript">javascript</option>
 						<option value="ggbscript">geogebra</option>
 					</select>
-					<input id="baba1" type="checkbox" onchange="updateAtt(this)">Prepend Babadook (red on wrong)</input>
-					<button class="buttons"onclick="removeAtt(this)">Remove</button>
+					<input class="check" id="baba1" type="checkbox" onchange="updateAtt(this)">Prepend Babadook (red on wrong)</input>
+					<button class="buttons" onclick="removeAtt(this)">Remove</button>
 				</div>
 				<div id="objColor" style="display: none;">
 					<p>Foreground Color:</p>
 					<input id="red" placeholder="Red" type="number" name="quantity" min="0" max="255" onchange="updateAtt(this)"/>
 					<input id="green" placeholder="Green" type="number" name="quantity" min="0" max="255" onchange="updateAtt(this)"/>
 					<input id="blue" placeholder="Blue" type="number" name="quantity" min="0" max="255" onchange="updateAtt(this)"/>
-					<button class="buttons"onclick="removeAtt(this)">Remove</button>
+					<button class="buttons" onclick="removeAtt(this)">Remove</button>
 				</div>
 				<div id="bgColor" style="display: none;">
 					<p>Background Color:</p>
 					<input id="bgred" placeholder="Red" type="number" name="quantity" min="0" max="255" onchange="updateAtt(this)"/>
 					<input id="bggreen" placeholder="Green" type="number" name="quantity" min="0" max="255" onchange="updateAtt(this)"/>
 					<input id="bgblue" placeholder="Blue" type="number" name="quantity" min="0" max="255" onchange="updateAtt(this)"/>
-					<button class="buttons"onclick="removeAtt(this)">Remove</button>
+					<button class="buttons" onclick="removeAtt(this)">Remove</button>
 				</div>
 				<div id="length" style="display: none;">
 					<p>Length:</p>
 					<input id="lengthVal" placeholder="Length" type="number" name="quantity" min="1" onchange="updateAtt(this)"/>
-					<button class="buttons"onclick="removeAtt(this)">Remove</button>
+					<button class="buttons" onclick="removeAtt(this)">Remove</button>
 				</div>
 				<div id="show" style="display: none;">
 					<p>Visibility:</p>
 					<input id="objShow" type="checkbox" onchange="updateAtt(this)">Show Object</input>
 					<input id="labelShow" type="checkbox" onchange="updateAtt(this)">Show Label</input>
-					<button class="buttons"onclick="removeAtt(this)">Remove</button>
+					<button class="buttons" onclick="removeAtt(this)">Remove</button>
 				</div>
 				<div id="caption" style="display: none;">
 					<p>Caption:</p>
 					<input id="captionVal" placeholder="Caption" onchange="updateAtt(this)"/>
-					<button class="buttons"onclick="removeAtt(this)">Remove</button>
+					<button class="buttons" onclick="removeAtt(this)">Remove</button>
 				</div>
 
 			</div>
@@ -105,13 +104,13 @@
 				  	<option id="att6" value='onUpdate'>Script (Update)</option>
 				  	<option id="att7" value='show'>Show</option>
 				</select>
-				<button class="buttons"onclick="addAttrib()">Add Attribute</button>
+				<button class="buttons" onclick="addAttrib()">Add Attribute</button>
 			</div>
 			
 			<div id="addVars">
 				<h3>Specify additional variables needed for script</h3>
 				<div id="var">
-					<input id="newVar" type="checkbox" onchange="updateVar(this)">New</input>
+					<input class="check" id="newVar" type="checkbox" onchange="updateVar(this)">New</input>
 					<select id="vaType" onchange="updateVar(this)">
 					  <option value='InputBox'>InputBox</option>
 					  <option value='text'>Text</option>
@@ -123,17 +122,17 @@
 					<input id="tag" placeholder="Tag" onchange="updateVar(this)"/>
 					<input id="name" placeholder="Name" onchange="updateVar(this)"/>
 					<input id="value" placeholder="Value" style="display: none;" onchange="updateVar(this)"/>
-					<button class="buttons"onclick="removeVars(this)">Remove</button>
+					<button class="buttons" onclick="removeVars(this)">Remove</button>
 				</div>
 					
 			</div>
-			<button class="buttons"onclick="addVars()">Add Var</button>
+			<button class="buttons" onclick="addVars()">Add Var</button>
 		</div>
 
 		
 		<div id="codeSection">
 			<h3>Copy and paste this code into a javascript button onClick in geogebra and click it to see the magic happen.</h3>
-			<button class="buttons"onclick="constructCode()">Construct Code</button>
+			<button class="buttons" onclick="constructCode()">Construct Code</button>
 
 			<pre><code class="language-javascript" id="outputCode"></code></pre>
 			<pre id="outputCode2"></pre>
