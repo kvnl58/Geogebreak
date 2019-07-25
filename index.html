@@ -18,6 +18,8 @@
 		<div id="settings">
 			<div id="typeGoal">
 				<h3>Choose var type and goal</h3>
+				<p>Replace variable names with #tag in any additional script</p>
+				<input id="Tag" placeholder="Tag" onchange="setTag()"/> 
 				<select id="mainSelect" onchange="setMain()">
 				  <option value='InputBox'>InputBox</option>
 				  <option value='text'>Text</option>
@@ -34,7 +36,7 @@
 			<div id="attributes">
 				<h3>Specify attributes</h3>
 				<div id="reqAttribs">
-					<input id="Tag" placeholder="Tag" onchange="setTag()"/> 
+					<input id="Tag" placeholder="Tag"/> 
 					<input id="Name" placeholder="Name" onchange="changeName(this)"/>
 					<input id="Value" placeholder="Value" onchange="setVal()"/> 
 					<input id="start" placeholder="Start Index" type="number" name="quantity" min="1" onchange="setInd()"/>
@@ -130,7 +132,7 @@
 
 		
 		<div id="codeSection">
-			<h3>Copy and paste this code into a javascript button class="buttons"onClick in geogebra and click it to see the magic happen.</h3>
+			<h3>Copy and paste this code into a javascript button onClick in geogebra and click it to see the magic happen.</h3>
 			<button class="buttons"onclick="constructCode()">Construct Code</button>
 
 			<pre><code class="language-javascript" id="outputCode"></code></pre>
