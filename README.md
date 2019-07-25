@@ -3,7 +3,7 @@ Open html in a browser to open app.
 
 add tags in the code that will be replace by their respective variable names. For example, babadook onUpdate script looks like this:
 
-<script>
+
 var a = ggbApplet.getValueString('#t');
 var len = a.length;
 for(var i = 0; i < len; i++) a = a.replace(' ', '');
@@ -20,4 +20,4 @@ var num = parseFloat(a);
 } catch(err) {
   ggbApplet.setTextValue('#t', '?');
 }
-</script>
+
