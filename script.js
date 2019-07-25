@@ -329,7 +329,7 @@ function constructCode(){
 	}
 
 	console.log(mainVal);
-	xmlAdj = xmlAdj.replace(mainTag, "'mainVar\" + j + \"'");
+	xmlAdj = xmlAdj.replace(mainTag, "'\" + mainVar + \"'");
 
 	if(goal == 'create'){
 		switch(mainVar){
