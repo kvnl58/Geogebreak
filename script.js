@@ -427,7 +427,7 @@ function constructCode(){
 					}
 
 					outputCode = "var vals = [" + vals + "];\n" + outputCode;
-					outputCode += "\tvar val = vals[j];\n";
+					outputCode += "\tvar val = vals[i];\n";
 					console.log(varTag);
 					xmlAdj = xmlAdj.replace(varTag, "\" + val + \"");
 
