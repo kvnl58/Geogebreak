@@ -17,7 +17,25 @@ function setGoal(){
 
 function setTag() {
 	var tag = document.getElementById('Tag').value;
-	mainTag = new RegExp("#" + tag, "g");
+	if(tag.length == 0){
+		switch(mainVar){
+			case 'InputBox':
+				mainTag =  new RegExp("#i", "g");
+				break;
+			case 'text':
+				mainTag =  new RegExp("#t", "g");
+				break;
+			case 'num':
+				mainTag =  new RegExp("#n", "g");
+				break;
+			case 'button':
+				mainTag =  new RegExp("#b", "g");
+				break;
+		}
+	} else {
+		mainTag = new RegExp("#" + tag, "g");
+
+	}
 	console.log("mainTag:" + mainTag);
 }
 
@@ -50,11 +68,11 @@ function setInd(){
 	console.log("startInd: " + startInd);
 }
 
-var varCount = "1";
+var varCount = 1
 function setReps(){
 	varCount = document.getElementById('reps').value;
 	if(varCount.length == 0){
-		varCount = "1";
+		varCount = 1;
 	}
 	console.log("varCount: " + varCount);
 }
@@ -164,10 +182,7 @@ function updateAtt(element){
 		if(children[i].id == element.id)
 			ind = i-1;
 	}
-	if(parent == 'show' || (parent == 'onUpdate' || parent == 'val') && ind == 2)
-		attribs[parInd][ind] = document.getElementById(element.id).checked;
-	else
-		attribs[parInd][ind] = document.getElementById(element.id).value;
+	attribs[parInd][ind] = document.getElementById(element.id).value;
 }
 
 var vars = [];
@@ -177,27 +192,90 @@ var original = document.getElementById('var');
 original.style.display = 'none';
 // HANDLE EXTRA VARS
 function addVars(){
-	var clone = original.cloneNode(true); // "deep" clone
-    clone.id = "var" + ++varNum;
+	var type = document.getElementById('vaType').value;
 
-	var c = clone.children;
-	c[0].id = "newVar" + varNum;
-	c[1].id = "vaType" + varNum;
-	c[2].id = "tag" +varNum;
-	c[3].id = "Name" + varNum;
-	c[4].id = "Value" + varNum;
+	if(type == 'Array'){
+		var valArray = createValArray();
+		vars.push(valArray.id);
+		var c = valArray.children;
+	} else {
+		var clone = original.cloneNode(true); // "deep" clone
+	    clone.id = "var" + ++varNum;
 
-	vars.push(clone.id);
-	console.log(vars);
+		var c = clone.children;
+		c[0].id = "varTitle" + varNum;
+		c[1].id = "varTag" +varNum;
+		c[2].id = "Name" + varNum;
+		c[3].id = "Value" + varNum;
 
-	var varInit = [false, 'InputBox', 'i', 'InputBox', ''];
-	varSettings.push(varInit);
-	console.log(varSettings);
+		c[0].innerHTML = document.getElementById('varAction').value + " " + document.getElementById('vaType').value + ":";
 
-    clone.style.display = "block";
-    original.parentNode.appendChild(clone);
+		vars.push(clone.id);
+		console.log(vars);
+
+		var varInit = [document.getElementById('varAction').value == 'Create', document.getElementById('vaType').value, '', '', ''];
+		varSettings.push(varInit);
+		console.log(varSettings);
+
+	    clone.style.display = "block";
+	    original.parentNode.appendChild(clone);
+	}
 	
 }
+
+	
+function createValArray(){
+	var valArray = document.createElement("div");
+	valArray.id = "var" + ++varNum;
+
+	var arrTitle = document.createElement('P');
+	arrTitle.innerHTML = "Value Array: ";
+	valArray.appendChild(arrTitle);
+
+	var tag = document.createElement('INPUT');
+	tag.setAttribute("id", "varTag");
+	tag.setAttribute("placeholder", "Tag");
+	tag.setAttribute("class", "varTag");
+	tag.setAttribute("onchange", "updateVar(this)");
+	valArray.appendChild(tag);
+
+	for(var i = 0; i < varCount; i++){
+		var row = document.createElement("div");
+		row.setAttribute("id", "arrInd" + i);
+
+		var arrName = document.createElement('P');
+		arrName.innerHTML = "Value " + i + " ";
+		row.appendChild(arrName);
+
+		var arrVal = document.createElement('INPUT');
+		arrVal.setAttribute("type", "text");
+		arrVal.setAttribute("placeholder", "Value");
+		arrVal.setAttribute("onchange", "updateArr(this)");
+		arrName.appendChild(arrVal);
+
+		valArray.appendChild(row);
+
+	}
+
+	var remove = document.createElement('BUTTON');
+	remove.setAttribute("class", "buttons");
+	remove.innerHTML = "Remove";
+	remove.setAttribute("onclick", "removeVars(this)");
+	valArray.appendChild(remove);
+
+	document.getElementById('allVars').appendChild(valArray);
+	var init = [false, 'Array', 'n'];
+	for(var i = 0; i < varCount; i++){
+		init.push('');
+	}
+	varSettings.push(init);
+
+	console.log(varSettings);
+	return valArray;
+
+}
+
+
 
 function removeVars(element){
 	var parent = element.parentNode;
@@ -211,28 +289,45 @@ function removeVars(element){
     console.log(varSettings);
 }
 
+function updateArr(element){
+	var gParent = element.parentNode.parentNode.parentNode;
+	console.log(gParent);
+	var ind = 0;
+	var parInd = vars.indexOf(gParent.id);
+	var children = gParent.children;
+
+	console.log(children);
+	for(var i = 1; i < children.length; i++){
+		console.log(children[i].id + ":" + element.id)
+		if(children[i].id == element.parentNode.parentNode.id){
+			ind = i + 1;
+		}
+
+	}
+	varSettings[parInd][ind] = element.value;
+
+	console.log(varSettings);
+
+}
+
 function updateVar(element){
 	parent = element.parentNode.id;
-	console.log(parent);
+	console.log(element);
 	var ind = 0;
 	var parInd = vars.indexOf(parent);
 	var children = document.getElementById(parent).children;
-	console.log(children[1].children[3]);
-	for(var i = 0; i < children.length; i++){
-		if(children[i].id == element.id)
-			ind = i;
-	}
-	if(ind == 0){
-		varSettings[parInd][ind] = document.getElementById(element.id).checked;
-		if(varSettings[parInd][ind])
-			children[4].style.display = 'inline';
-		else
-			children[4].style.display = 'none';
+	console.log(children);
+	for(var i = 1; i < children.length; i++){
+		console.log(children[i].id + ":" + element.id)
+		if(children[i].id == element.id){
+			ind = i + 1;
+		}
 
-	} else{ 
-		varSettings[parInd][ind] = document.getElementById(element.id).value;
 	}
+	varSettings[parInd][ind] = element.value;
+
 	console.log(varSettings);
+
 }
 
 function constructCode(){
@@ -289,8 +384,9 @@ function constructCode(){
 	if(vars.length > 0){
 		for(var i = 0; i < vars.length; i++){
 			varName = varSettings[i];
+			console.log(varSettings);
 			var varTag = new RegExp("#" + varName[2], "g")
-			console.log(varName[1]);
+			console.log(varName[i]);
 			switch(varName[1]){
 				case 'InputBox':
 					outputCode += "\tvar box = '" + varName[3] + "' + j; \n";
@@ -298,13 +394,13 @@ function constructCode(){
 					if(varName[0] == true)
 						createNewVars += "\tggbApplet.evalCommand(box + \" = InputBox(\" + text + \")\");\n";
 					break;
-				case 'text':
+				case 'Text':
 					outputCode += "\tvar text = '" + varName[3] + "' + j; \n";
 					xmlAdj = xmlAdj.replace(varTag, "'text\" + j + \"'");
 					if(varName[0] == true)
 						createNewVars += "\tggbApplet.evalCommand(text + \' = \"" + varName[4] + "\"\');\n";
 					break;
-				case 'num':
+				case 'Slider':
 					outputCode += "\tvar num = '" + varName[3] + "' + j; \n";
 					xmlAdj = xmlAdj.replace(varTag, "'num\" + j + \"'");
 					break;
@@ -315,12 +411,25 @@ function constructCode(){
 					outputCode += "\tvar list = '" + varName[3] + "' + j; \n";
 					xmlAdj = xmlAdj.replace(varTag, "'list\" + j + \"'");
 					break;
-				case 'button':
+				case 'Button':
 					outputCode += "\tvar butt = '" + varName[3] + "' + j; \n";
 					xmlAdj = xmlAdj.replace(varTag, "'butt\" + j + \"'");
 					if(varName[0] == true)
 						createNewVars += "\tggbApplet.evalCommand(butt + \" = Button(\"" + varName[4] + "\")\");\n";
 					break;
+				case 'Array':
+					var vals = [];
+					console.log(varName);
+					for(var k = 0; k < varCount; k++){
+						var ind = k + 3;
+						vals.push('"'+ varName[ind] + '"');
+					}
+
+					outputCode = "var vals = [" + vals + "];\n" + outputCode;
+					outputCode += "\tvar val = vals[j];\n";
+					console.log(varTag);
+					xmlAdj = xmlAdj.replace(varTag, "\" + val + \"");
+
 			}
 		}
 
@@ -350,8 +459,9 @@ function constructCode(){
 					break;
 		}
 		
-	
 	}
+
+	
 
 	
 

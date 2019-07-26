@@ -109,24 +109,32 @@
 			
 			<div id="addVars">
 				<h3>Specify additional variables needed for script</h3>
-				<div id="var">
-					<input class="check" id="newVar" type="checkbox" onchange="updateVar(this)">New</input>
-					<select id="vaType" onchange="updateVar(this)">
-					  <option value='InputBox'>InputBox</option>
-					  <option value='text'>Text</option>
-					  <option value='num'>Slider</option>
-					  <option value='l' style="display: none;">Sequence</option>
-					  <option value='button'>Button</option>
-					  <option value='array'>Value Array</option>
-					</select>
-					<input id="tag" placeholder="Tag" onchange="updateVar(this)"/>
-					<input id="name" placeholder="Name" onchange="updateVar(this)"/>
-					<input id="value" placeholder="Value" style="display: none;" onchange="updateVar(this)"/>
-					<button class="buttons" onclick="removeVars(this)">Remove</button>
+				<div id="allVars">
+					<div id="var">
+						<p id="varTitle"></p>
+						<input id="varTag" class="varTag" placeholder="Tag" onchange="updateVar(this)"/>
+						<input id="name" placeholder="Name" onchange="updateVar(this)"/>
+						<input id="value" placeholder="Value" onchange="updateVar(this)"/>
+						<button class="buttons" onclick="removeVars(this)">Remove</button>
+					</div>
 				</div>
-					
+				
+				<select id="vaType">
+				  <option value='InputBox'>InputBox</option>
+				  <option value='Text'>Text</option>
+				  <option value='Slider'>Slider</option>
+				  <option value='l' style="display: none;">Sequence</option>
+				  <option value='Button'>Button</option>
+				  <option value='Array'>Value Array</option>
+				</select>
+				<select id="varAction">
+					<option value='Create'>Create</option>
+					<option value='Edit'>Edit</option>
+				</select>
+				
+				<button class="buttons" onclick="addVars()">Add Var</button>
 			</div>
-			<button class="buttons" onclick="addVars()">Add Var</button>
+			
 		</div>
 
 		
@@ -183,7 +191,7 @@ var num = parseFloat(a);
 </pre>
 
 <pre id="babadook1" style="display: none;">
-if(ggbApplet.getValueString(#t) != 10){ 
+if(ggbApplet.getValueString(#t) != #n){ 
   ggbApplet.setColor(#i, 250, 34, 51);}
 else {
   ggbApplet.setVisible(#i, false);

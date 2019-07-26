@@ -12,7 +12,7 @@ button {
 }
 
 input {
-	width: 30%;
+	width: 25%;
   	padding: 4px 0;
   	margin-top: 4px;
 }
@@ -35,6 +35,10 @@ select {
 }
 
 #Tag {
+	width: 10%;
+}
+
+.varTag {
 	width: 10%;
 }
 
