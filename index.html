@@ -38,8 +38,8 @@
 					<input id="Tag" placeholder="Tag" onchange="setTag()"/> 
 					<input id="Name" placeholder="Name" onchange="changeName(this)"/>
 					<input id="Value" placeholder="Value" onchange="setVal()"/> 
-					<input id="start" placeholder="Start Index" type="number" name="quantity" min="1" onchange="setInd()"/>
-					<input id="reps" placeholder="Amount" type="number" name="quantity" min="1" onchange="setReps()"/>
+					<input id="start" class="numInput" placeholder="Start" type="number" name="quantity" min="1" onchange="setInd()"/>
+					<input id="reps" class="numInput" placeholder="Reps" type="number" name="quantity" min="1" onchange="setReps()"/>
 				</div>
 				<div id="onUpdate" style="display: none;">
 					<p id="updateTitle">onUpdate Script:</p>
@@ -119,7 +119,7 @@
 					</div>
 				</div>
 				
-				<select id="vaType">
+				<select id="vaType" class="addVarBtn">
 				  <option value='InputBox'>InputBox</option>
 				  <option value='Text'>Text</option>
 				  <option value='Slider'>Slider</option>
@@ -127,12 +127,12 @@
 				  <option value='Button'>Button</option>
 				  <option value='Array'>Value Array</option>
 				</select>
-				<select id="varAction">
+				<select id="varAction" class="addVarBtn">
 					<option value='Create'>Create</option>
 					<option value='Edit'>Edit</option>
 				</select>
 				
-				<button class="buttons" onclick="addVars()">Add Var</button>
+				<button class="buttons" onclick="addVars()" class="addVarBtn">Add Var</button>
 			</div>
 			
 		</div>
@@ -202,6 +202,13 @@ else {
 
 
 	</div>
+
+
 	<script src="prism/prism.js"></script>
 	<script src="script.js"></script>
+	<footer>
+	</footer>
 </body>
+
+
+</html>

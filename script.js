@@ -230,6 +230,7 @@ function createValArray(){
 
 	var arrTitle = document.createElement('P');
 	arrTitle.innerHTML = "Value Array: ";
+	arrTitle.setAttribute("style", "display: inline-block;")
 	valArray.appendChild(arrTitle);
 
 	var tag = document.createElement('INPUT');
@@ -460,10 +461,6 @@ function constructCode(){
 		}
 		
 	}
-
-	
-
-	
 
 	console.log(xmlAdj);
 	outputCode += xmlAdj;
