@@ -35,6 +35,10 @@ footer {
 	margin-top: 50px;
 }
 
+pre {
+	min-height: 29vh;
+}
+
 .addVarBtn {
 	margin-top: 20px; 
 }
@@ -90,7 +94,6 @@ footer {
 	display: inline-block;
 	width: 50%;
 	float:right;
-
 }
 
 #app{
