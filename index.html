@@ -30,7 +30,7 @@
 					<option value='create'>Create</option>
 					<option value='edit'>Edit</option>
 				</select>
-				<button class="buttons" onclick="reset()">Reset</Button>
+				<button class="buttons" onclick="reset()">Clear All</Button>
 			</div>
 			<div id="attributes">
 				<h3>Specify attributes</h3>
@@ -43,7 +43,7 @@
 				</div>
 				<div id="onUpdate" style="display: none;">
 					<p id="updateTitle">onUpdate Script:</p>
-					<textarea id="scriptTxt" placeholder="Script Goes Here" rows="10", cols="60" onchange="updateAtt(this)"></textarea>
+					<div id="editor"></div>
 					<select id="scriptType" onchange="updateAtt(this)">
 						<option value="javascript">javascript</option>
 						<option value="ggbscript">geogebra</option>
@@ -54,7 +54,7 @@
 
 				<div id="val" style="display: none;">
 					<p id="clickTitle">onClick Script:</p>
-					<textarea id="scriptTxt1" placeholder="Script Goes Here" rows="10", cols="60" onchange="updateAtt(this)"></textarea>
+					<div id="editor2"></div>
 					<select id="scriptType1" onchange="updateAtt(this)">
 						<option value="javascript">javascript</option>
 						<option value="ggbscript">geogebra</option>
@@ -104,7 +104,7 @@
 				  	<option id="att6" value='onUpdate'>Script (Update)</option>
 				  	<option id="att7" value='show'>Show</option>
 				</select>
-				<button class="buttons" onclick="addAttrib()">Add Attribute</button>
+				<button class="buttons" id="addAttribBtn" onclick="addAttrib()">Add Attribute</button>
 			</div>
 			
 			<div id="addVars">
@@ -132,7 +132,7 @@
 					<option value='Edit'>Edit</option>
 				</select>
 				
-				<button class="buttons" onclick="addVars()" class="addVarBtn">Add Var</button>
+				<button class="buttons" id="addVarBtns" onclick="addVars()" class="addVarBtn">Add Var</button>
 			</div>
 			
 		</div>
@@ -141,9 +141,9 @@
 		<div id="codeSection">
 			<h3>Copy and paste this code into a javascript button onClick in geogebra and click it to see the magic happen.</h3>
 			<button class="buttons" onclick="constructCode()">Construct Code</button>
-
+			<button class="buttons" onclick="copyText()">Copy Code</button>
 			<pre><code class="language-javascript" id="outputCode"></code></pre>
-			<pre id="outputCode2"></pre>
+			<textarea id="copyCode" style="display:none;"></textarea>
 		</div>	
 
 		<pre><code id="insertXML" style="display:none;">function insertXML (objectName, startStr, endStr, code ){
@@ -202,12 +202,12 @@ else {
 
 
 	</div>
-
-
+		<footer>
+	</footer>
+	<script src="./ace-builds/ace.js" type="text/javascript" charset="utf-8"></script>
 	<script src="prism/prism.js"></script>
 	<script src="script.js"></script>
-	<footer>
-	</footer>
+
 </body>
 
 

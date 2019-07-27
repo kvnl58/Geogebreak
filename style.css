@@ -54,6 +54,25 @@ footer {
 	margin-bottom: 15px;
 }
 
+#addAttrib {
+	margin-top: 25px;
+}
+
+
+#editor { 
+    position: relative !important;
+    border: 1px solid lightgray;
+    height: 200px;
+    width: 87%;
+}
+
+#editor2 { 
+    position: relative !important;
+    border: 1px solid lightgray;
+    height: 200px;
+    width: 87%;
+}
+
 #Tag {
 	width: 10%;
 }
@@ -76,4 +95,12 @@ footer {
 
 #app{
 	margin: 4vw;
+}
+
+#addVarBtns {
+	background-color: rgb(247, 195, 17);
+}
+
+#addAttribBtn {
+	background-color: rgb(247, 195, 17);
 }

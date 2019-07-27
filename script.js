@@ -2,7 +2,14 @@ var mainVar ='InputBox';
 var goal = 'create';
 var mainTag =  new RegExp("#i", "g");
 
+var editor = ace.edit("editor");
+editor.setTheme("ace/theme/chrome");
+editor.session.setMode("ace/mode/javascript");
 
+
+var editor2 = ace.edit("editor2");
+editor2.setTheme("ace/theme/chrome");
+editor2.session.setMode("ace/mode/javascript");
 
 //TYPE AND GOAL
 function setMain(){
@@ -182,7 +189,11 @@ function updateAtt(element){
 		if(children[i].id == element.id)
 			ind = i-1;
 	}
-	attribs[parInd][ind] = document.getElementById(element.id).value;
+	if(parent == 'onUpdate' || parent == 'val'){
+		attribs[parInd][ind] = document.getElementById(element.id).checked;
+	} else {
+		attribs[parInd][ind] = document.getElementById(element.id).value;
+	}
 }
 
 var vars = [];
@@ -331,12 +342,16 @@ function updateVar(element){
 
 }
 
+var currCode = "";
+
 function constructCode(){
 	console.log(attribs);
 	var outputCode = "";
 	var xmlAdj = "";
 	var varAdj = "";
 	var createNewVars = "";
+
+	//update code with attribute data
 	if(attribs.length > 0){
 		outputCode += document.getElementById('insertXML').innerHTML;
 		for(var i = 0; i < attribNames.length; i++){
@@ -347,10 +362,16 @@ function constructCode(){
 				case 'val':
 					if(attribs[i][2]){
 						code = document.getElementById('babadook1').innerHTML + "\n" + code;
+						console.log(code);
+						editor2.session.setValue(code.replace(/&lt;/g, "<"));
+						document.getElementById('baba1').checked = false;
 					}
 				case 'onUpdate':
 					if(attribs[i][2] && varName != 'val'){
 						code = document.getElementById('babadook2').innerHTML + "\n" + code;
+						console.log(code);
+						editor.session.setValue(code.replace(/&lt;/g, "<"));
+						document.getElementById('baba').checked = false;
 					}
 					console.log(code);
 				    code = code.replace(/\"/g, '\'');
@@ -382,6 +403,7 @@ function constructCode(){
 	outputCode += "\tvar j = i + " + startInd + "; \n";
 	outputCode += "\tvar mainVar = '" + mainName + "' + j; \n";
 
+	//update code with additional vars
 	if(vars.length > 0){
 		for(var i = 0; i < vars.length; i++){
 			varName = varSettings[i];
@@ -467,7 +489,16 @@ function constructCode(){
 	
 	outputCode += "}";
 	document.getElementById('outputCode').innerHTML = outputCode;
+	currCode = outputCode;
 	Prism.highlightAll();
+
+}
+
+function copyText() {
+	element = document.getElementById('copyCode');
+	element.value = currCode;
+	element.select();
+	document.execCommand("copy");
 
 }
 
