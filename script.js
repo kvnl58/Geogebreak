@@ -413,30 +413,30 @@ function constructCode(){
 			switch(varName[1]){
 				case 'InputBox':
 					outputCode += "\tvar box = '" + varName[3] + "' + j; \n";
-					xmlAdj = xmlAdj.replace(varTag, "'box \" + j + '\"");
+					xmlAdj = xmlAdj.replace(varTag, "box \" + j + \"");
 					if(varName[0] == true)
 						createNewVars += "\tggbApplet.evalCommand(box + \" = InputBox(\" + text + \")\");\n";
 					break;
 				case 'Text':
 					outputCode += "\tvar text = '" + varName[3] + "' + j; \n";
-					xmlAdj = xmlAdj.replace(varTag, "'text\" + j + \"'");
+					xmlAdj = xmlAdj.replace(varTag, "text\" + j + \"");
 					if(varName[0] == true)
 						createNewVars += "\tggbApplet.evalCommand(text + \' = \"" + varName[4] + "\"\');\n";
 					break;
 				case 'Slider':
 					outputCode += "\tvar num = '" + varName[3] + "' + j; \n";
-					xmlAdj = xmlAdj.replace(varTag, "'num\" + j + \"'");
+					xmlAdj = xmlAdj.replace(varTag, "num\" + j + \"");
 					break;
 					if(varName[0] == true)
 						createNewVars += "\tggbApplet.evalCommand(num + \" = " + varName[4] + " \");\n";
 					break;
 				case 'l':
 					outputCode += "\tvar list = '" + varName[3] + "' + j; \n";
-					xmlAdj = xmlAdj.replace(varTag, "'list\" + j + \"'");
+					xmlAdj = xmlAdj.replace(varTag, "list\" + j + \"");
 					break;
 				case 'Button':
 					outputCode += "\tvar butt = '" + varName[3] + "' + j; \n";
-					xmlAdj = xmlAdj.replace(varTag, "'butt\" + j + \"'");
+					xmlAdj = xmlAdj.replace(varTag, "butt\" + j + \"");
 					if(varName[0] == true)
 						createNewVars += "\tggbApplet.evalCommand(butt + \" = Button(\"" + varName[4] + "\")\");\n";
 					break;
@@ -451,7 +451,7 @@ function constructCode(){
 					outputCode = "var vals = [" + vals + "];\n" + outputCode;
 					outputCode += "\tvar val = vals[i];\n";
 					console.log(varTag);
-					xmlAdj = xmlAdj.replace(varTag, "\" + val + \"");
+					xmlAdj = xmlAdj.replace(varTag, " + val + ");
 
 			}
 		}
@@ -461,7 +461,7 @@ function constructCode(){
 	}
 
 	console.log(mainVal);
-	xmlAdj = xmlAdj.replace(mainTag, "'\" + mainVar + \"'");
+	xmlAdj = xmlAdj.replace(mainTag, "\" + mainVar + \"");
 
 	if(goal == 'create'){
 		switch(mainVar){
@@ -490,16 +490,21 @@ function constructCode(){
 	outputCode += "}";
 	document.getElementById('outputCode').innerHTML = outputCode;
 	currCode = outputCode;
+	console.log(outputCode);
 	Prism.highlightAll();
 
 }
 
 function copyText() {
+	var element = document.createElement('TEXTAREA');
+	document.getElementById('codeSection').appendChild(element);
+	element.setAttribute("id", "copyCode");
 	element = document.getElementById('copyCode');
+	console.log(outputCode);
 	element.value = currCode;
 	element.select();
 	document.execCommand("copy");
-
+	element.parentNode.removeChild(element);
 }
 
 

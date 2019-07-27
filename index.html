@@ -143,7 +143,6 @@
 			<button class="buttons" onclick="constructCode()">Construct Code</button>
 			<button class="buttons" onclick="copyText()">Copy Code</button>
 			<pre><code class="language-javascript" id="outputCode">Code will appear here</code></pre>
-			<textarea id="copyCode" style="display:none;"></textarea>
 		</div>	
 
 		<pre><code id="insertXML" style="display:none;">function insertXML (objectName, startStr, endStr, code ){
@@ -170,7 +169,7 @@
 </code></pre>
 
 <pre id="babadook2" style="display: none;">
-var a = ggbApplet.getValueString(#t);
+var a = ggbApplet.getValueString('#t');
 var len = a.length;
 for(var i = 0; i < len; i++) a = a.replace(' ', '');
 len = a.length;
@@ -183,19 +182,19 @@ var num = parseFloat(a);
   //if(num > 999) num = 999;
   //if(num > 99) num = 99;
   //if(num < 0) num =0;
-  ggbApplet.setTextValue(#t, ''+num);
+  ggbApplet.setTextValue('#t', ''+num);
 } catch(err) {
-  ggbApplet.setTextValue(#t, '?');
+  ggbApplet.setTextValue('#t', '?');
 }
 
 </pre>
 
 <pre id="babadook1" style="display: none;">
-if(ggbApplet.getValueString(#t) != #n){ 
-  ggbApplet.setColor(#i, 250, 34, 51);}
+if(ggbApplet.getValueString('#t') != '#n'){ 
+  ggbApplet.setColor('#i', 250, 34, 51);}
 else {
-  ggbApplet.setVisible(#i, false);
-  ggbApplet.setVisible(#t, true);
+  ggbApplet.setVisible('#i', false);
+  ggbApplet.setVisible('#t', true);
 }
 
 </pre>
