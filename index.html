@@ -158,7 +158,7 @@
 	}
 	
 	if(found){
-		xml = xml.replace(line, startStr + code + endStr);
+		xml = xml.replace(line, startStr + "\"" +  code + '\"/>' + endStr);
 	} else {
 		xml = xml.replace(/<\/element>/, startStr + "\"" + code + '\"/>\n&lt;/element>');
 	}
