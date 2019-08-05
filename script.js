@@ -178,9 +178,30 @@ function removeAtt(element){
 }
 
 
+function seeCode(){
+	console.log(editor.getValue());
+	console.log(editor2.getValue());
+	var code;
+
+	for(var i = 0; i < attribNames.length; i++){
+		if(attribNames[i] == 'onUpdate'){
+			console.log(editor.getValue());
+			code = editor.getValue();
+			editor.session.setValue(code.replace(/&lt;/g, "<"));
+			attribs[i][0] = code;
+		} else if(attribNames[i] == 'val') {
+			code = editor2.getValue();		
+			editor2.session.setValue(code.replace(/&lt;/g, "<"));
+			attribs[i][0] = code;
+		}
+	}
+	
+}
+
 function updateAtt(element){
 	parent = element.parentNode.id;
 	console.log(parent);
+	var code = "";
 	var ind = 0;
 	var parInd = attribNames.indexOf(parent);
 	var children = document.getElementById(parent).children;
@@ -189,11 +210,42 @@ function updateAtt(element){
 		if(children[i].id == element.id)
 			ind = i-1;
 	}
-	if(parent == 'onUpdate' || parent == 'val'){
+	if(parent == 'onUpdate'){
+		console.log(editor.getValue());
+		if(document.getElementById(element.id).checked == true){
+			code = document.getElementById('babadook2').innerHTML + "\n" + editor.getValue();
+		} else {
+			code = editor.getValue();
+		}
+		editor.session.setValue(code.replace(/&lt;/g, "<"));
+		attribs[parInd][ind] = document.getElementById(element.id).checked;
+		attribs[parInd][0] = code;
+	} else if(parent == 'val') {
+		if(document.getElementById(element.id).checked == true){
+			code = document.getElementById('babadook1').innerHTML + "\n" + editor2.getValue();
+		} else {
+			code = editor2.getValue();
+		}		
+		editor2.session.setValue(code.replace(/&lt;/g, "<"));
+		attribs[parInd][0] = code;
 		attribs[parInd][ind] = document.getElementById(element.id).checked;
 	} else {
 		attribs[parInd][ind] = document.getElementById(element.id).value;
 	}
+
+	attribs[parInd][0] = code;
+	seeCode();
+}
+
+function clearScript(element) {
+	parName = element.parentNode.id;
+
+	if(parName == 'val') {
+		editor.session.setValue("");
+	} else {
+		editor2.session.setValue("");
+	}
+
 }
 
 var vars = [];
@@ -318,6 +370,7 @@ function updateArr(element){
 	}
 	varSettings[parInd][ind] = element.value;
 
+
 	console.log(varSettings);
 
 }
@@ -345,12 +398,12 @@ function updateVar(element){
 var currCode = "";
 
 function constructCode(){
+	seeCode();
 	console.log(attribs);
 	var outputCode = "";
 	var xmlAdj = "";
 	var varAdj = "";
 	var createNewVars = "";
-
 	//update code with attribute data
 	if(attribs.length > 0){
 		outputCode += document.getElementById('insertXML').innerHTML;
@@ -360,19 +413,7 @@ function constructCode(){
 			var code = attribs[i][0];
 			switch(varName){
 				case 'val':
-					if(attribs[i][2]){
-						code = document.getElementById('babadook1').innerHTML + "\n" + code;
-						console.log(code);
-						editor2.session.setValue(code.replace(/&lt;/g, "<"));
-						document.getElementById('baba1').checked = false;
-					}
 				case 'onUpdate':
-					if(attribs[i][2] && varName != 'val'){
-						code = document.getElementById('babadook2').innerHTML + "\n" + code;
-						console.log(code);
-						editor.session.setValue(code.replace(/&lt;/g, "<"));
-						document.getElementById('baba').checked = false;
-					}
 					console.log(code);
 				    code = code.replace(/\"/g, '\'');
 				    code = code.replace(/\r?\n|\r/g, '\" + \"\\n\" + \"');
@@ -413,30 +454,30 @@ function constructCode(){
 			switch(varName[1]){
 				case 'InputBox':
 					outputCode += "\tvar box = '" + varName[3] + "' + j; \n";
-					xmlAdj = xmlAdj.replace(varTag, "box \" + j + \"");
+					xmlAdj = xmlAdj.replace(varTag, varName[3] + "\" + j + \"");
 					if(varName[0] == true)
 						createNewVars += "\tggbApplet.evalCommand(box + \" = InputBox(\" + text + \")\");\n";
 					break;
 				case 'Text':
 					outputCode += "\tvar text = '" + varName[3] + "' + j; \n";
-					xmlAdj = xmlAdj.replace(varTag, "text\" + j + \"");
+					xmlAdj = xmlAdj.replace(varTag, varName[3] + "\" + j + \"");
 					if(varName[0] == true)
 						createNewVars += "\tggbApplet.evalCommand(text + \' = \"" + varName[4] + "\"\');\n";
 					break;
 				case 'Slider':
 					outputCode += "\tvar num = '" + varName[3] + "' + j; \n";
-					xmlAdj = xmlAdj.replace(varTag, "num\" + j + \"");
+					xmlAdj = xmlAdj.replace(varTag, varName[3] + "\" + j + \"");
 					break;
 					if(varName[0] == true)
 						createNewVars += "\tggbApplet.evalCommand(num + \" = " + varName[4] + " \");\n";
 					break;
 				case 'l':
 					outputCode += "\tvar list = '" + varName[3] + "' + j; \n";
-					xmlAdj = xmlAdj.replace(varTag, "list\" + j + \"");
+					xmlAdj = xmlAdj.replace(varTag, varName[3] + "\" + j + \"");
 					break;
 				case 'Button':
 					outputCode += "\tvar butt = '" + varName[3] + "' + j; \n";
-					xmlAdj = xmlAdj.replace(varTag, "butt\" + j + \"");
+					xmlAdj = xmlAdj.replace(varTag, varName[3] + "\" + j + \"");
 					if(varName[0] == true)
 						createNewVars += "\tggbApplet.evalCommand(butt + \" = Button(\"" + varName[4] + "\")\");\n";
 					break;
@@ -451,7 +492,7 @@ function constructCode(){
 					outputCode = "var vals = [" + vals + "];\n" + outputCode;
 					outputCode += "\tvar val = vals[i];\n";
 					console.log(varTag);
-					xmlAdj = xmlAdj.replace(varTag, " + val + ");
+					xmlAdj = xmlAdj.replace(varTag, "\" + val + \"");
 
 			}
 		}

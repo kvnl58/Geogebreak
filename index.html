@@ -42,55 +42,55 @@
 					<input id="reps" class="numInput" placeholder="Reps" type="number" name="quantity" min="1" onchange="setReps()"/>
 				</div>
 				<div id="onUpdate" style="display: none;">
-					<p id="updateTitle">onUpdate Script:</p>
+					<p id="updateTitle">onUpdate Script: <button class="buttons" onclick="clearScript(this)">Clear Script</button></p>
 					<div id="editor"></div>
 					<select id="scriptType" onchange="updateAtt(this)">
 						<option value="javascript">javascript</option>
 						<option value="ggbscript">geogebra</option>
 					</select>
 					<input class="check" id="baba" type="checkbox" onchange="updateAtt(this)">Prepend Babadook</input>
-					<button class="buttons" onclick="removeAtt(this)">Remove</button>
+					<button class="buttonsRM" onclick="removeAtt(this)">Remove</button>
 				</div>
 
 				<div id="val" style="display: none;">
-					<p id="clickTitle">onClick Script:</p>
+					<p id="clickTitle">onClick Script: <button class="buttons" onclick="clearScript(this)">Clear Script</button></p>
 					<div id="editor2"></div>
 					<select id="scriptType1" onchange="updateAtt(this)">
 						<option value="javascript">javascript</option>
 						<option value="ggbscript">geogebra</option>
 					</select>
 					<input class="check" id="baba1" type="checkbox" onchange="updateAtt(this)">Prepend Babadook (red on wrong)</input>
-					<button class="buttons" onclick="removeAtt(this)">Remove</button>
+					<button class="buttonsRM" onclick="removeAtt(this)">Remove</button>
 				</div>
 				<div id="objColor" style="display: none;">
 					<p>Foreground Color:</p>
 					<input id="red" placeholder="Red" type="number" name="quantity" min="0" max="255" onchange="updateAtt(this)"/>
 					<input id="green" placeholder="Green" type="number" name="quantity" min="0" max="255" onchange="updateAtt(this)"/>
 					<input id="blue" placeholder="Blue" type="number" name="quantity" min="0" max="255" onchange="updateAtt(this)"/>
-					<button class="buttons" onclick="removeAtt(this)">Remove</button>
+					<button class="buttonsRM" onclick="removeAtt(this)">Remove</button>
 				</div>
 				<div id="bgColor" style="display: none;">
 					<p>Background Color:</p>
 					<input id="bgred" placeholder="Red" type="number" name="quantity" min="0" max="255" onchange="updateAtt(this)"/>
 					<input id="bggreen" placeholder="Green" type="number" name="quantity" min="0" max="255" onchange="updateAtt(this)"/>
 					<input id="bgblue" placeholder="Blue" type="number" name="quantity" min="0" max="255" onchange="updateAtt(this)"/>
-					<button class="buttons" onclick="removeAtt(this)">Remove</button>
+					<button class="buttonsRM" onclick="removeAtt(this)">Remove</button>
 				</div>
 				<div id="length" style="display: none;">
 					<p>Length:</p>
 					<input id="lengthVal" placeholder="Length" type="number" name="quantity" min="1" onchange="updateAtt(this)"/>
-					<button class="buttons" onclick="removeAtt(this)">Remove</button>
+					<button class="buttonsRM" onclick="removeAtt(this)">Remove</button>
 				</div>
 				<div id="show" style="display: none;">
 					<p>Visibility:</p>
 					<input id="objShow" type="checkbox" onchange="updateAtt(this)">Show Object</input>
 					<input id="labelShow" type="checkbox" onchange="updateAtt(this)">Show Label</input>
-					<button class="buttons" onclick="removeAtt(this)">Remove</button>
+					<button class="buttonsRM" onclick="removeAtt(this)">Remove</button>
 				</div>
 				<div id="caption" style="display: none;">
 					<p>Caption:</p>
 					<input id="captionVal" placeholder="Caption" onchange="updateAtt(this)"/>
-					<button class="buttons" onclick="removeAtt(this)">Remove</button>
+					<button class="buttonsRM" onclick="removeAtt(this)">Remove</button>
 				</div>
 
 			</div>
@@ -115,7 +115,7 @@
 						<input id="varTag" class="varTag" placeholder="Tag" onchange="updateVar(this)"/>
 						<input id="name" placeholder="Name" onchange="updateVar(this)"/>
 						<input id="value" placeholder="Value" onchange="updateVar(this)"/>
-						<button class="buttons" onclick="removeVars(this)">Remove</button>
+						<button class="buttonsRM" onclick="removeVars(this)">Remove</button>
 					</div>
 				</div>
 				
@@ -190,7 +190,7 @@ var num = parseFloat(a);
 </pre>
 
 <pre id="babadook1" style="display: none;">
-if(ggbApplet.getValueString('#t') != '#n'){ 
+if(ggbApplet.getValueString('#t') != #n){ 
   ggbApplet.setColor('#i', 250, 34, 51);}
 else {
   ggbApplet.setVisible('#i', false);
