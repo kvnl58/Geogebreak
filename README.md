@@ -1,5 +1,6 @@
 # Geogebreak
 Open html in a browser to open app.
+
 __----------------CHOOSE VAR TYPE AND GOAL----------------__
 
 Select the type of element you want and whether you want to create a new element(s) or edit already existing one(s).
