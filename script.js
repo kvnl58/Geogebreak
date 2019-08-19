@@ -14,11 +14,17 @@ editor2.session.setMode("ace/mode/javascript");
 //TYPE AND GOAL
 function setMain(){
 	mainVar = document.getElementById('mainSelect').value;
+	if(mainVar == "text" && goal == "edit"){
+		alert("Editing an existing text object's xml crashes geogebra");
+	}
 	console.log("mainVar: " + mainVar);
 }
 
 function setGoal(){
 	goal = document.getElementById('action').value;
+	if(mainVar == "text" && goal == "edit"){
+		alert("Editing an existing text object's xml crashes geogebra");
+	}
 	console.log("goal: " + goal);
 }
 
@@ -132,6 +138,12 @@ function addAttrib(){
 				var u = [""];
 				attribs.push(u);
 				break;
+			case 'linkedGeo':
+				alert("Changing the link of an Inputbox will successfully change the link, but that change will not be displayed in the properties of the InputBox");
+				document.getElementById('att8').style.display = 'none';
+				var u = [""];
+				attribs.push(u);
+				break;
 
 		}
 	}
@@ -169,6 +181,9 @@ function removeAtt(element){
 		case 'caption':
 			document.getElementById('att2').style.display = 'inline';
 			break;
+		case 'linkedGeo':
+			document.getElementById('att8').style.display = 'inline';
+			break;		
 
 	}
 
@@ -233,7 +248,7 @@ function updateAtt(element){
 		attribs[parInd][ind] = document.getElementById(element.id).value;
 	}
 
-	attribs[parInd][0] = code;
+    console.log(attribs);
 	seeCode();
 }
 
@@ -422,6 +437,7 @@ function constructCode(){
 					break;
 				case 'length':
 				case 'caption':
+				    console.log(attribs[i]);
 					xmlAdj += "\t" + "var newXML" + i + " = insertXML(mainVar, " + "'&lt;" + varName + " val=', " + "'\\n', \'" + attribs[i][0] + "\');" + "\n";
 					xmlAdj += "\t" + "ggbApplet.evalXML(newXML" + i + ");" + "\n";
 					break;
@@ -434,6 +450,11 @@ function constructCode(){
 					xmlAdj += "\t" + "var newXML" + i + " = insertXML(mainVar, " + "'&lt;" + varName +  " ', '\\n', \'" + " r=\"" + attribs[i][0] + "\" g=\"" + attribs[i][1] + "\" r=\"" + attribs[i][2] + "\" alpha=\"255\"\');" + "\n";
 					xmlAdj += "\t" + "ggbApplet.evalXML(newXML" + i + ");" + "\n";
 					break;
+				case 'linkedGeo':
+					xmlAdj += "\t" + "var newXML" + i + " = insertXML(mainVar, " + "'&lt;" + varName + " exp=', " + "'\\n', \'" + attribs[i][0] + "\' + j);" + "\n";
+					xmlAdj += "\t" + "ggbApplet.evalXML(newXML" + i + ");" + "\n";
+					break;
+
 			}
 		}
 		console.log(xmlAdj);
@@ -489,10 +510,10 @@ function constructCode(){
 						vals.push('"'+ varName[ind] + '"');
 					}
 
-					outputCode = "var vals = [" + vals + "];\n" + outputCode;
-					outputCode += "\tvar val = vals[i];\n";
+					outputCode = "var vals" + i + " = [" + vals + "];\n" + outputCode;
+					outputCode += "\tvar val" + i + " = vals" + i + "[i];\n";
 					console.log(varTag);
-					xmlAdj = xmlAdj.replace(varTag, "\" + val + \"");
+					xmlAdj = xmlAdj.replace(varTag, "\" + val" + i +" + \"");
 
 			}
 		}
@@ -551,4 +572,3 @@ function copyText() {
 
 
  
-

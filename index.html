@@ -11,7 +11,7 @@
 <body>
 	<header>
 		<h1>Geogebra Time!</h1>
-		<h2>Useful for creating and editing a large number of objects of the same time at the same time </h2>
+		<h2>Useful for creating and editing a large number of objects of the same type at the same time </h2>
 
 	</header>
 	<div id="app">
@@ -19,6 +19,7 @@
 			<div id="typeGoal">
 				<h3>Choose var type and goal</h3>
 				<p>Replace variable names with #tag in any additional script</p>
+				<p>To use text values in a value array add quotes around value array tag.</p>
 				<select id="mainSelect" onchange="setMain()">
 				  <option value='InputBox'>InputBox</option>
 				  <option value='text'>Text</option>
@@ -92,6 +93,11 @@
 					<input id="captionVal" placeholder="Caption" onchange="updateAtt(this)"/>
 					<button class="buttonsRM" onclick="removeAtt(this)">Remove</button>
 				</div>
+				<div id="linkedGeo" style="display: none;">
+					<p>Linked Object:</p>
+					<input id="linkVal" placeholder="Name" onchange="updateAtt(this)"/>
+					<button class="buttonsRM" onclick="removeAtt(this)">Remove</button>
+				</div>
 
 			</div>
 			<div id="addAttrib">
@@ -103,7 +109,8 @@
 				  	<option id="att5" value='val'>Script (Click)</option>
 				  	<option id="att6" value='onUpdate'>Script (Update)</option>
 				  	<option id="att7" value='show'>Show</option>
-				</select>
+				  	<option id="att8" value='linkedGeo'>Linked Object</option>
+ 				</select>
 				<button class="buttons" id="addAttribBtn" onclick="addAttrib()">Add Attribute</button>
 			</div>
 			
@@ -190,6 +197,9 @@ var num = parseFloat(a);
 </pre>
 
 <pre id="babadook1" style="display: none;">
+// This sets the color of the input box to red on wrong
+// and makes the input box not show on correct.
+// Feel free to edit this code.
 if(ggbApplet.getValueString('#t') != #n){ 
   ggbApplet.setColor('#i', 250, 34, 51);}
 else {
