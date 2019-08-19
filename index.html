@@ -98,6 +98,11 @@
 					<input id="linkVal" placeholder="Name" onchange="updateAtt(this)"/>
 					<button class="buttonsRM" onclick="removeAtt(this)">Remove</button>
 				</div>
+				<div id="condition" style="display: none;">
+					<p>Condition Show:</p>
+					<input id="condVal" placeholder="Condition" onchange="updateAtt(this)"/>
+					<button class="buttonsRM" onclick="removeAtt(this)">Remove</button>
+				</div>
 
 			</div>
 			<div id="addAttrib">
@@ -110,6 +115,7 @@
 				  	<option id="att6" value='onUpdate'>Script (Update)</option>
 				  	<option id="att7" value='show'>Show</option>
 				  	<option id="att8" value='linkedGeo'>Linked Object</option>
+				  	<option id="att9" value='condition'>Condition Show</option>
  				</select>
 				<button class="buttons" id="addAttribBtn" onclick="addAttrib()">Add Attribute</button>
 			</div>

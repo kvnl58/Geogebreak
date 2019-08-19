@@ -144,6 +144,11 @@ function addAttrib(){
 				var u = [""];
 				attribs.push(u);
 				break;
+			case 'condition':
+				document.getElementById('att9').style.display = 'none';
+				var u = [""];
+				attribs.push(u);
+				break;
 
 		}
 	}
@@ -183,6 +188,9 @@ function removeAtt(element){
 			break;
 		case 'linkedGeo':
 			document.getElementById('att8').style.display = 'inline';
+			break;		
+		case 'condition':
+			document.getElementById('att9').style.display = 'inline';
 			break;		
 
 	}
@@ -452,6 +460,10 @@ function constructCode(){
 					break;
 				case 'linkedGeo':
 					xmlAdj += "\t" + "var newXML" + i + " = insertXML(mainVar, " + "'&lt;" + varName + " exp=', " + "'\\n', \'" + attribs[i][0] + "\' + j);" + "\n";
+					xmlAdj += "\t" + "ggbApplet.evalXML(newXML" + i + ");" + "\n";
+					break;
+				case 'condition':
+					xmlAdj += "\t" + "var newXML" + i + " = insertXML(mainVar, " + "'&lt;" + varName + " showObject=', " + "'\\n', \'" + attribs[i][0] + "\');" + "\n";
 					xmlAdj += "\t" + "ggbApplet.evalXML(newXML" + i + ");" + "\n";
 					break;
 
