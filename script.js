@@ -489,20 +489,19 @@ function constructCode(){
 					outputCode += "\tvar box = '" + varName[3] + "' + j; \n";
 					xmlAdj = xmlAdj.replace(varTag, varName[3] + "\" + j + \"");
 					if(varName[0] == true)
-						createNewVars += "\tggbApplet.evalCommand(box + \" = InputBox(\" + text + \")\");\n";
+						createNewVars += "\tggbApplet.evalCommand(" + varName[3] + " + \" = InputBox(\"" + varName[4] + "\")\");\n";
 					break;
 				case 'Text':
-					outputCode += "\tvar text = '" + varName[3] + "' + j; \n";
+					outputCode += "\tvar " + varName[3] + " = '" + varName[3] + "' + j; \n";
 					xmlAdj = xmlAdj.replace(varTag, varName[3] + "\" + j + \"");
 					if(varName[0] == true)
-						createNewVars += "\tggbApplet.evalCommand(text + \' = \"" + varName[4] + "\"\');\n";
+						createNewVars += "\tggbApplet.evalCommand(" + varName[3] + " + \' = \"" + varName[4] + "\"\');\n";
 					break;
 				case 'Slider':
-					outputCode += "\tvar num = '" + varName[3] + "' + j; \n";
+					outputCode += "\tvar " + varName[3] + " = '" + varName[3] + "' + j; \n";
 					xmlAdj = xmlAdj.replace(varTag, varName[3] + "\" + j + \"");
-					break;
 					if(varName[0] == true)
-						createNewVars += "\tggbApplet.evalCommand(num + \" = " + varName[4] + " \");\n";
+						createNewVars += "\tggbApplet.evalCommand(" + varName[3] + " + \" = " + varName[4] + " \");\n";
 					break;
 				case 'l':
 					outputCode += "\tvar list = '" + varName[3] + "' + j; \n";
@@ -512,7 +511,7 @@ function constructCode(){
 					outputCode += "\tvar butt = '" + varName[3] + "' + j; \n";
 					xmlAdj = xmlAdj.replace(varTag, varName[3] + "\" + j + \"");
 					if(varName[0] == true)
-						createNewVars += "\tggbApplet.evalCommand(butt + \" = Button(\"" + varName[4] + "\")\");\n";
+						createNewVars += "\tggbApplet.evalCommand(" + varName[3] + " + \" = Button(\"" + varName[4] + "\")\");\n";
 					break;
 				case 'Array':
 					var vals = [];
@@ -540,7 +539,7 @@ function constructCode(){
 	if(goal == 'create'){
 		switch(mainVar){
 			case 'InputBox':
-					outputCode += "\tggbApplet.evalCommand(mainVar + \"= InputBox(\" + text + \")\");\n";
+					outputCode += "\tggbApplet.evalCommand(mainVar + \"= InputBox(\" + " + mainVal + " + \")\");\n";
 					break;
 				case 'text':
 					outputCode += "\tggbApplet.evalCommand(mainVar + \' = \"" + mainVal + "\"\');\n";
