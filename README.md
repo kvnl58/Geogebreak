@@ -12,7 +12,7 @@ __TAG__
 
   - For example, a javascript script to get the value of a text object with the tag 't' would look like this:
 
-  - var a = ggbApplet.getValueString('#t');
+        var a = ggbApplet.getValueString('#t');
 
 __NAME__
   - Put the core name of the object that you want to create.
@@ -34,7 +34,7 @@ __REPS__
 
   - For example, a text object named myText with a START of 5 and a REPS of 5 will have the values:
 
-  - myText5, myText6, myText7, myText8, myText9
+          myText5, myText6, myText7, myText8, myText9
 
 __ATTRIBUTES__
 
