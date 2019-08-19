@@ -46,7 +46,7 @@ __ATTRIBUTES__
       - Can set the script for any object. Reference instructions for TAG for how to write script for this section.
       - You can use the prepend babadook feature to automatically add babadook to the coding box.
   - SCRIPT (UPDATE) - 
-        - Can set the script for any object. Reference instructions for TAG for how to write script for this section.
+      - Can set the script for any object. Reference instructions for TAG for how to write script for this section.
       - You can use the prepend babadook feature to automatically add babadook to the coding box.
   - SHOW - SetVisible()
   - LINKED OBJECT - Changes the linked object for an inputbox. THIS CHANGE WILL NOT SHOW UP IN THE DEFINITION IN THE SETTINGS OF THE INPUTBOX BUT WILL CHANGE THE LINKED OBJECT.
@@ -54,5 +54,9 @@ __ATTRIBUTES__
 
 ## __SPECIFY ADDITIONAL VARIABLES NEEDED FOR SCRIPT__
 
-Similar to choosing the var type and goal.
+Additional variables are needed to tell the script what objects need to be created or already exist so that those objects' names or values can be used in the onClick or onUpdate scripts or as the value for an inputbox.
+
+If you want to create an InputBox you will need to specify to what object the inputbox is linked to by putting the name of the object as the value of the inputbox.
+
+Usage is similar to choosing the main var type/goal and basic attributes.
 
