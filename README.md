@@ -39,8 +39,8 @@ __REPS__
 __ATTRIBUTES__
 
   - CAPTION - Changes the caption of an object.
-  - BACKGROUND COLOR - Sets the background color for texts and objects in the spreadsheet. __NOT CURRENTLY WORKING__
-  - COLOR - Changes color of an object __NOT CURRENTLY WORKING__
+  - BACKGROUND COLOR - Sets the background color for texts and objects in the spreadsheet. __BROKEN__
+  - COLOR - Changes color of an object __BROKEN__
   - LENGTH - Sets the length of an InputBox
   - SCRIPT (CLICK)
       - Can set the script for any object. Reference instructions for TAG for how to write script for this section.
@@ -48,7 +48,7 @@ __ATTRIBUTES__
   - SCRIPT (UPDATE) - 
       - Can set the script for any object. Reference instructions for TAG for how to write script for this section.
       - You can use the prepend babadook feature to automatically add babadook to the coding box.
-  - SHOW - SetVisible()
+  - SHOW - SetVisible() __BROKEN__
   - LINKED OBJECT - Changes the linked object for an inputbox. THIS CHANGE WILL NOT SHOW UP IN THE DEFINITION IN THE SETTINGS OF THE INPUTBOX BUT WILL CHANGE THE LINKED OBJECT.
   - CONDITION SHOW - Adds logic to condition to show area of an object.
 
