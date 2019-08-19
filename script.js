@@ -221,6 +221,8 @@ function seeCode(){
 	
 }
 
+
+// updates the array with the data entered by user in attributes section
 function updateAtt(element){
 	parent = element.parentNode.id;
 	console.log(parent);
@@ -455,7 +457,7 @@ function constructCode(){
 					break;
 				case 'objColor':
 				case 'bgColor':
-					xmlAdj += "\t" + "var newXML" + i + " = insertXML(mainVar, " + "'&lt;" + varName +  " ', '\\n', \'" + " r=\"" + attribs[i][0] + "\" g=\"" + attribs[i][1] + "\" r=\"" + attribs[i][2] + "\" alpha=\"255\"\');" + "\n";
+					xmlAdj += "\t" + "var newXML" + i + " = insertXML(mainVar, " + "'&lt;" + varName +  " ', '\\n', \'" + " r=\"" + attribs[i][0] + "\" g=\"" + attribs[i][1] + "\" b=\"" + attribs[i][2] + "\" alpha=\"255\"\');" + "\n";
 					xmlAdj += "\t" + "ggbApplet.evalXML(newXML" + i + ");" + "\n";
 					break;
 				case 'linkedGeo':
@@ -511,7 +513,7 @@ function constructCode(){
 					outputCode += "\tvar butt = '" + varName[3] + "' + j; \n";
 					xmlAdj = xmlAdj.replace(varTag, varName[3] + "\" + j + \"");
 					if(varName[0] == true)
-						createNewVars += "\tggbApplet.evalCommand(" + varName[3] + " + \" = Button(\"" + varName[4] + "\")\");\n";
+						createNewVars += "\tggbApplet.evalCommand(" + varName[3] + " + \" = Button();\n";
 					break;
 				case 'Array':
 					var vals = [];
