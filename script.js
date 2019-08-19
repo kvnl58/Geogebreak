@@ -553,7 +553,7 @@ function constructCode(){
 					outputCode += "\tggbApplet.evalCommand(mainVar + \" = InputBox(\" + text + \")\");\n";
 					break;
 				case 'button':
-					outputCode += "\tggbApplet.evalCommand(mainVar + \" = Button(\"" + mainVal + "\")\");\n";
+					outputCode += "\tggbApplet.evalCommand(mainVar + \" = Button()\");\n";
 					break;
 		}
 		
