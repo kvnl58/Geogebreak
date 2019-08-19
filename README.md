@@ -54,9 +54,14 @@ __ATTRIBUTES__
 
 ## __SPECIFY ADDITIONAL VARIABLES NEEDED FOR SCRIPT__
 
-Additional variables are needed to tell the script what objects need to be created or already exist so that those objects' names or values can be used in the onClick or onUpdate scripts or as the value for an inputbox.
+Additional variables are needed to tell the script what objects need to be created or already exist so that those objects' names or values can be used in the onClick or onUpdate scripts or as the value for an inputbox. You can add multiple of any object.
 
 If you want to create an InputBox you will need to specify to what object the inputbox is linked to by putting the name of the object as the value of the inputbox.
 
 Usage is similar to choosing the main var type/goal and basic attributes.
+
+  - VALUE ARRAY
+      - Allows for entering of different literals for each object.
+      - if literal is a number, do not put quotes around the tag.
+      - if literal is a string, add quotes around tag.
 
