@@ -39,8 +39,8 @@ __REPS__
 __ATTRIBUTES__
 
   - CAPTION - Changes the caption of an object.
-  - BACKGROUND COLOR - Sets the background color for texts and objects in the spreadsheet.
-  - COLOR - Changes color of an object
+  - BACKGROUND COLOR - Sets the background color for texts and objects in the spreadsheet. __NOT CURRENTLY WORKING__
+  - COLOR - Changes color of an object __NOT CURRENTLY WORKING__
   - LENGTH - Sets the length of an InputBox
   - SCRIPT (CLICK)
       - Can set the script for any object. Reference instructions for TAG for how to write script for this section.
