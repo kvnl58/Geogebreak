@@ -1,5 +1,10 @@
 # Geogebreak
+Useful for creating and editing a large number of objects of the same type at the same time in geogebra.
+
+## __Launch__
+
 Open html in a browser to open app.
+MANUALLY COPY CONSTRUCTED CODE. THE BUTTON IS BROKEN
 
 ## __CHOOSE VAR TYPE AND GOAL__
 
@@ -30,7 +35,7 @@ __START__
   - For example, a text object named myText will have the name myText0 if start is 0.
 
 __REPS__
-  - This is the number of objects that will be created in geogebra. The number added to the end of the core name starts at START and increments for each object REPS times. 
+  - Reps is short for repetitions. This is the number of objects that will be created in geogebra. The number added to the end of the core name starts at START and increments for each object REPS times. 
 
   - For example, a text object named myText with a START of 5 and a REPS of 5 will have the values:
 
@@ -62,6 +67,12 @@ Usage is similar to choosing the main var type/goal and basic attributes.
 
   - VALUE ARRAY
       - Allows for entering of different literals for each object.
-      - if literal is a number, do not put quotes around the tag.
-      - if literal is a string, add quotes around tag.
+      - if literal is a number, do not put quotes around the tag and the value will be the number.
+      - if literal is a string, add quotes around tag and put the string literal without quotes as the value.
 
+## __COPY CODE__
+
+  1. Copy the code manually. Copy Code Button is __BROKEN__
+  2. Create a button in geogebra.
+  3. Add the code to the onClick script. 
+  4. Click the button to see the magic happen.
