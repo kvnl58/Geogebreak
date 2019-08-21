@@ -1,5 +1,6 @@
 # Geogebreak
 Open html in a browser to open app.
+MANUALLY COPY CONSTRUCTED CODE, THE BUTTON IS BROKEN
 
 ## __CHOOSE VAR TYPE AND GOAL__
 
@@ -65,3 +66,6 @@ Usage is similar to choosing the main var type/goal and basic attributes.
       - if literal is a number, do not put quotes around the tag.
       - if literal is a string, add quotes around tag.
 
+##__COPY CODE__
+
+Copy the code manually, then create a button in geogebra, add the code to the onClick script. Click the button to see the magic happen.
