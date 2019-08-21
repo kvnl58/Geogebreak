@@ -67,8 +67,8 @@ Usage is similar to choosing the main var type/goal and basic attributes.
 
   - VALUE ARRAY
       - Allows for entering of different literals for each object.
-      - if literal is a number, do not put quotes around the tag.
-      - if literal is a string, add quotes around tag.
+      - if literal is a number, do not put quotes around the tag and the value will be the number.
+      - if literal is a string, add quotes around tag and put the string literal without quotes as the value.
 
 ##__COPY CODE__
 
