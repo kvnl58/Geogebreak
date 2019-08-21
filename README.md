@@ -35,7 +35,7 @@ __START__
   - For example, a text object named myText will have the name myText0 if start is 0.
 
 __REPS__
-  - This is the number of objects that will be created in geogebra. The number added to the end of the core name starts at START and increments for each object REPS times. 
+  - Reps is short for repetitions. This is the number of objects that will be created in geogebra. The number added to the end of the core name starts at START and increments for each object REPS times. 
 
   - For example, a text object named myText with a START of 5 and a REPS of 5 will have the values:
 
