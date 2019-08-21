@@ -70,6 +70,9 @@ Usage is similar to choosing the main var type/goal and basic attributes.
       - if literal is a number, do not put quotes around the tag and the value will be the number.
       - if literal is a string, add quotes around tag and put the string literal without quotes as the value.
 
-##__COPY CODE__
+## __COPY CODE__
 
-Copy the code manually, then create a button in geogebra, add the code to the onClick script. Click the button to see the magic happen.
+  1. Copy the code manually. Copy Code Button is __BROKEN__
+  2. Create a button in geogebra.
+  3. Add the code to the onClick script. 
+  4. Click the button to see the magic happen.
