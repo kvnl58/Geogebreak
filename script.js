@@ -452,12 +452,12 @@ function constructCode(){
 					xmlAdj += "\t" + "ggbApplet.evalXML(newXML" + i + ");" + "\n";
 					break;
 				case 'show':
-					xmlAdj += "\t" + "var newXML" + i + " = insertXML(mainVar, " + "'&lt;" + varName +  " ', '\\n', \'" + " object=\"" + attribs[i][0] + "\" label=\"" + attribs[i][1] + "\"\');" + "\n";
+					xmlAdj += "\t" + "var newXML" + i + " = insertXML(mainVar, " + "'&lt;" + varName +  " ', '\\n', \'" + "object=\"" + attribs[i][0] + "\" label=\"" + attribs[i][1] + "\"\');" + "\n";
 					xmlAdj += "\t" + "ggbApplet.evalXML(newXML" + i + ");" + "\n";
 					break;
 				case 'objColor':
 				case 'bgColor':
-					xmlAdj += "\t" + "var newXML" + i + " = insertXML(mainVar, " + "'&lt;" + varName +  " ', '\\n', \'" + " r=\"" + attribs[i][0] + "\" g=\"" + attribs[i][1] + "\" b=\"" + attribs[i][2] + "\" alpha=\"255\"\');" + "\n";
+					xmlAdj += "\t" + "var newXML" + i + " = insertXML(mainVar, " + "'&lt;" + varName +  " ', '\\n', \'" + "r=\"" + attribs[i][0] + "\" g=\"" + attribs[i][1] + "\" b=\"" + attribs[i][2] + "\" alpha=\"255\');" + "\n";
 					xmlAdj += "\t" + "ggbApplet.evalXML(newXML" + i + ");" + "\n";
 					break;
 				case 'linkedGeo':
@@ -563,6 +563,8 @@ function constructCode(){
 	outputCode += xmlAdj;
 	
 	outputCode += "}";
+
+	outputCode = outputCode.replace("\" +  + \"", "");
 	document.getElementById('outputCode').innerHTML = outputCode;
 	currCode = outputCode;
 	console.log(outputCode);
